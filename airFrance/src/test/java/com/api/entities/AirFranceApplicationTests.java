@@ -53,7 +53,7 @@ public class AirFranceApplicationTests {
     public void testGetUserPresent() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/user/Michel"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name", CoreMatchers.containsString("Michel")));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name", CoreMatchers.containsString("Michel")));
     }
 
     @Test
