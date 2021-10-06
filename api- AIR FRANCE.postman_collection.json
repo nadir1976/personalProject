@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "af7c4659-995e-4a5c-ac39-5decc2e9862f",
+		"name": "api- AIR FRANCE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8082/api/save/user/",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":null,\"name\":\"michel martin15\",\r\n\"dateNaissance\":\"1919-03-01\",\r\n\"countryResidence\":\"france\",\r\n\"phoneNumber\":\"0612238646\",\r\n\"gender\":\"Femme\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/api/save/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"save",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/api/user/nadir",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/user/nadir",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"user",
+						"nadir"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
