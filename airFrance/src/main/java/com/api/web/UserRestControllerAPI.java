@@ -14,6 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/api")
 public class UserRestControllerAPI {
@@ -21,17 +24,22 @@ public class UserRestControllerAPI {
     private UserRepository userRepository;
 
     @GetMapping(value = "/user/{nom}")
-    public User getUserByNom(@PathVariable(required = false) String nom) {
+    public List<User> getUserByNom(@PathVariable(required = false) String nom) {
 
         if (!StringUtils.hasText(nom)) {
             throw new InputRequiredException(nom);
         }
 
-        return userRepository.findAll()
+        List<User> listeUserResultat= userRepository.findAll()
                 .stream()
                 .filter(user -> user.getName().toLowerCase().contains(nom.toLowerCase()))
-                .findFirst()
-                .orElseThrow(() -> new UserNotFoundException(nom));
+                .collect(Collectors.toList());
+
+        if(listeUserResultat.isEmpty() ){
+            throw  new UserNotFoundException(nom);
+        }
+        return listeUserResultat;
+
     }
 
 
